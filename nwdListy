@@ -1,0 +1,14 @@
+def nwd(lista):
+    # oblicza nwd listy liczb metodą Euklidesa
+
+    nwdAktualny = lista[0]
+    for liczba in lista:
+    # np. nwd(liczba1,liczba2,liczba3)=nwd(nwd(liczba1,liczba2),liczba3)=nwd(nwdAktualny,liczba3) 
+        while liczba != 0: # dopóki b różne od 0
+            nwdAktualny, liczba = liczba, nwdAktualny%liczba
+    return nwdAktualny
+
+lista = input('Podaj liczby rozdzielone spacjami:\n').split()
+for i in range(len(lista)):
+    lista[i] = int(lista[i]) # zamienia typy el. w tablicy z string na int
+print('NWD%s = %i' % (lista, nwd(lista)))
