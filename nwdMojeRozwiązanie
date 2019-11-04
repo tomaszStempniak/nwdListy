@@ -1,0 +1,19 @@
+print('5: NWD listy liczb naturalnych')
+array = input('Podaj liczby rozdzielone spacjami:\n').split()
+array = [int(element) for element in array] # zamienia typy elementów w tablicy z string na int
+print('NWD%a = %i' % (array, nwdArray(array)))
+
+def nwd(a, b):
+    # oblicza nwd pary liczb metodą Euklidesa
+    
+    while b: # dopóki b różne od 0
+        a, b = b, a%b
+    return a
+
+def nwdArray(array):
+    # oblicza nwd dla listy
+    
+    nwdCurrent = array[0]
+    for number in array: # nwd(a,b,c)=nwd(nwd(a,b),c)
+        nwdCurrent = nwd(number,nwdCurrent)
+    return nwdCurrent
